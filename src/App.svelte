@@ -1,56 +1,38 @@
 <script>
-  let name, num, isChecked, value, selected;
-  let questions = [
-    { id: 1, text: "What is hello" },
-    { id: 2, text: "What is world" },
+  import Form from "./Form.svelte";
+
+  let foods = [
+    { name: "Apple", color: "Red", id: 0 },
+    { name: "Carrot", color: "Orange", id: 1 },
   ];
+
+  const addFood = (e) => {
+    foods = [e.detail, ...foods];
+  };
 </script>
 
 <main>
-  <input type="text" bind:value={name} />
-  <input type="number" bind:value={num} />
-  <input type="checkbox" bind:value={isChecked} />
-
-  <label>
-    <input type="radio" bind:group={value} value={1} />
-    1
-  </label>
-  <label>
-    <input type="radio" bind:group={value} value={2} />
-    2
-  </label>
-  <label>
-    <input type="radio" bind:group={value} value={3} />
-    3
-  </label>
-
-  <select bind:value={selected}>
-    {#each questions as question}
-      <option value={question}>{question.text}</option>
-    {/each}
-  </select>
+  <Form on:addFood={addFood} />
+  {#each foods as food (food.id)}
+    <div class="fooditem">
+      <h3>{food.name}</h3>
+      <p>Color: {food.color}</p>
+    </div>
+  {/each}
 </main>
 
 <style>
-  h5,
-  p {
-    margin: 4px 0px;
-  }
-
-  .card {
-    padding: 8px;
-    border-radius: 20px;
+  .fooditem {
     border: 2px solid gray;
-    min-width: 400px;
+    text-align: left;
+    padding: 8px;
+    margin-top: 20px;
+    width: 100%;
   }
 
   main {
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-
-  h1 {
-    text-align: center;
   }
 </style>
