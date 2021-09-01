@@ -1,17 +1,29 @@
 <script>
   let fruits = [
-    // { name: "apple", color: "red", amount: 5, id: 1 },
-    // { name: "banana", color: "yellow", amount: 1, id: 2 },
-    // { name: "grape", color: "blue", amount: 14, id: 3 },
+    { name: "apple", color: "red", amount: 5, id: 1 },
+    { name: "banana", color: "yellow", amount: 1, id: 2 },
+    { name: "grape", color: "blue", amount: 14, id: 3 },
   ];
+
+  const deleteFruit = (id) => {
+    fruits = fruits.filter((fruit) => fruit.id != id);
+    console.log(fruits);
+  };
+
+  let num = 7;
 </script>
 
 <main>
   {#each fruits as fruit (fruit.id)}
-    <div class="card">
-      <h5>{fruit.name}</h5>
-      <p>{fruit.color}</p>
-    </div>
+    {#if fruit.amount > 4}
+      <div class="card">
+        <h5>{fruit.name}</h5>
+        <p>{fruit.color}</p>
+        <button on:click={() => deleteFruit(fruit.id)}>Delete</button>
+      </div>
+	  {:else}
+	  	<p class="card">{fruit.name} => Low fruit</p>
+    {/if}
   {:else}
     <p>There is no fruit</p>
   {/each}
