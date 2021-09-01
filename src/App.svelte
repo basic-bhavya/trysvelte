@@ -1,21 +1,17 @@
 <script>
-	let name = "Bro";
-	let src = "favicon.png";
+	let firstname = "";
+	let lastname = "";
 
-	const handleInput = (e) => {
-		name = e.target.value;
-	}
-
-	const resetname = () => {
-		name = "gasdfoasnifdiasf";
-	}
+	$: fullname = `${firstname} ${lastname}`;
+	$: console.log(lastname);
 </script>
 
 <main>
-	<h1>Hello {name} </h1>
-	<input type="text" bind:value={name}>
-	<button on:click={resetname}>Set name to unknown</button>
-	<img {src} alt="favicon">
+	<h1>Hello {fullname} </h1>
+	<label for="firstname">firstname</label>
+	<input type="text" bind:value={firstname}>
+	<label for="firstname">Lastname</label>
+	<input type="text" bind:value={lastname}>
 </main>
 
 <style>
