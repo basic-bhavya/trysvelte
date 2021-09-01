@@ -1,5 +1,6 @@
 <script>
   import Announcement from "./Announcement.svelte";
+  import Button from "./Button.svelte";
 
   let fruits = [
     { name: "apple", color: "red", amount: 5, id: 1 },
@@ -14,20 +15,7 @@
 </script>
 
 <main>
-	<Announcement />
-  {#each fruits as fruit (fruit.id)}
-    {#if fruit.amount > 4}
-      <div class="card">
-        <h5>{fruit.name}</h5>
-        <p>{fruit.color}</p>
-        <button on:click={() => deleteFruit(fruit.id)}>Delete</button>
-      </div>
-    {:else}
-      <p class="card">{fruit.name} => Low fruit</p>
-    {/if}
-  {:else}
-    <p>There is no fruit</p>
-  {/each}
+  <Button btnText={"Bye friend"} />
 </main>
 
 <style>
