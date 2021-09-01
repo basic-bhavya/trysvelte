@@ -1,21 +1,14 @@
 <script>
-  import Announcement from "./Announcement.svelte";
   import Button from "./Button.svelte";
 
-  let fruits = [
-    { name: "apple", color: "red", amount: 5, id: 1 },
-    { name: "banana", color: "yellow", amount: 1, id: 2 },
-    { name: "grape", color: "blue", amount: 14, id: 3 },
-  ];
-
-  const deleteFruit = (id) => {
-    fruits = fruits.filter((fruit) => fruit.id != id);
-    console.log(fruits);
+  const log = () => {
+    console.log("clicked");
   };
 </script>
 
 <main>
-  <Button btnText={"Bye friend"} />
+  <Button on:click={log} btnText={"Component button"} />
+  <button>App button</button>
 </main>
 
 <style>
