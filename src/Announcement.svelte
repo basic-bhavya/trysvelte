@@ -4,19 +4,19 @@
   let hideAlert = () => {
       show = false;
   }
+  
+  let warning = false;
 </script>
 
 {#if show}
-  <div class="alert">50% off 
+  <div class="alert" class:warning={warning}>50% off 
       <button on:click={hideAlert}>Hide</button>
   </div>
 {/if}
 
 <style>
-  .alert {
-    padding: 8px;
-    font-size: 18px;
-    background-color: darkseagreen;
-    color: darkslategrey;
-  }
+    .warning {
+        color: darkslategrey;
+        background-color: red;
+    }
 </style>
