@@ -1,14 +1,15 @@
 <script>
-  import Button from "./Button.svelte";
-
-  const log = () => {
-    console.log("clicked");
-  };
+  import Card from "./Card.svelte";
 </script>
 
 <main>
-  <Button on:click={log} btnText={"Component button"} />
-  <button>App button</button>
+  <Card>
+    <h3>This is on top</h3>
+    <button slot="button">This is a button</button>
+    <p slot="hello">This is card</p>
+    <h3>This is on bottom</h3>
+	<h4 slot="notfound">This doesn't show</h4>
+  </Card>
 </main>
 
 <style>

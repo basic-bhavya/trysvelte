@@ -9,11 +9,6 @@
 
 <!-- markup (zero or more items) goes here -->
 <style>
-  .card {
-    padding: 12px;
-    border: 1px solid violet;
-    color: white;
-  }
   button {
     display: flex;
     flex-direction: column;
