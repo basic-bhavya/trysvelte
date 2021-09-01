@@ -1,15 +1,34 @@
 <script>
-  import Card from "./Card.svelte";
+  let name, num, isChecked, value, selected;
+  let questions = [
+    { id: 1, text: "What is hello" },
+    { id: 2, text: "What is world" },
+  ];
 </script>
 
 <main>
-  <Card>
-    <h3>This is on top</h3>
-    <button slot="button">This is a button</button>
-    <p slot="hello">This is card</p>
-    <h3>This is on bottom</h3>
-	<h4 slot="notfound">This doesn't show</h4>
-  </Card>
+  <input type="text" bind:value={name} />
+  <input type="number" bind:value={num} />
+  <input type="checkbox" bind:value={isChecked} />
+
+  <label>
+    <input type="radio" bind:group={value} value={1} />
+    1
+  </label>
+  <label>
+    <input type="radio" bind:group={value} value={2} />
+    2
+  </label>
+  <label>
+    <input type="radio" bind:group={value} value={3} />
+    3
+  </label>
+
+  <select bind:value={selected}>
+    {#each questions as question}
+      <option value={question}>{question.text}</option>
+    {/each}
+  </select>
 </main>
 
 <style>
