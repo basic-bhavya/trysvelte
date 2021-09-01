@@ -1,27 +1,42 @@
 <script>
-	let firstname = "";
-	let lastname = "";
-
-	$: fullname = `${firstname} ${lastname}`;
-	$: console.log(lastname);
+  let fruits = [
+    // { name: "apple", color: "red", amount: 5, id: 1 },
+    // { name: "banana", color: "yellow", amount: 1, id: 2 },
+    // { name: "grape", color: "blue", amount: 14, id: 3 },
+  ];
 </script>
 
 <main>
-	<h1>Hello {fullname} </h1>
-	<label for="firstname">firstname</label>
-	<input type="text" bind:value={firstname}>
-	<label for="firstname">Lastname</label>
-	<input type="text" bind:value={lastname}>
+  {#each fruits as fruit (fruit.id)}
+    <div class="card">
+      <h5>{fruit.name}</h5>
+      <p>{fruit.color}</p>
+    </div>
+  {:else}
+    <p>There is no fruit</p>
+  {/each}
 </main>
 
 <style>
-	main {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
+  h5,
+  p {
+    margin: 4px 0px;
+  }
 
-	h1 {
-		text-align: center;
-	}
+  .card {
+    padding: 8px;
+    border-radius: 20px;
+    border: 2px solid gray;
+    min-width: 400px;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h1 {
+    text-align: center;
+  }
 </style>
