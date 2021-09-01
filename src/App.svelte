@@ -1,4 +1,6 @@
 <script>
+  import Announcement from "./Announcement.svelte";
+
   let fruits = [
     { name: "apple", color: "red", amount: 5, id: 1 },
     { name: "banana", color: "yellow", amount: 1, id: 2 },
@@ -9,11 +11,10 @@
     fruits = fruits.filter((fruit) => fruit.id != id);
     console.log(fruits);
   };
-
-  let num = 7;
 </script>
 
 <main>
+	<Announcement />
   {#each fruits as fruit (fruit.id)}
     {#if fruit.amount > 4}
       <div class="card">
@@ -21,8 +22,8 @@
         <p>{fruit.color}</p>
         <button on:click={() => deleteFruit(fruit.id)}>Delete</button>
       </div>
-	  {:else}
-	  	<p class="card">{fruit.name} => Low fruit</p>
+    {:else}
+      <p class="card">{fruit.name} => Low fruit</p>
     {/if}
   {:else}
     <p>There is no fruit</p>
